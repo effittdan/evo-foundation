@@ -6,7 +6,7 @@ const browser = await chromium.launch({ headless: true, channel: "msedge" });
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
 const errors = [];
 page.on("pageerror", (e) => errors.push(e.message));
-const base = "http://127.0.0.1:5184";
+const base = process.env.FOUNDATION_BASE_URL || "http://127.0.0.1:5184";
 const routes = [
   "/",
   "/patients",
@@ -32,6 +32,7 @@ for (const width of [1440, 390, 320]) {
       await picture.evaluate(img => img.decode());
     }
     await page.evaluate(() => window.scrollTo(0, 0));
+    await page.locator('img').evaluateAll(images => Promise.all(images.map(img => img.decode())));
     assert.equal(await page.locator("h1").count(), 1, route);
     assert.ok(!/endometriosis|ob\/gyn|gynecology/i.test(await page.locator('body').innerText()), `Retired specialty copy: ${route}`);
     assert.ok(

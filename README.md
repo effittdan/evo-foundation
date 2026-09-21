@@ -4,7 +4,9 @@ Local React/Vite website prototype. Run `npm install`, then `npm run dev`. Opens
 
 Eleven public routes plus a not-found state. Research and grants lead the site, with better medical outcomes and patient care as intended goals. Includes a general mission page, patient and professional topic previews, printable appointment worksheet, a five-step grant application preview, research program information, future CME, about and contact setup state. The earlier specialty URL resolves to /our-mission. POSITIONING.md records the September 21 direction.
 
-No backend, analytics, real submissions, persistence, uploads, live course enrollment, credit, or payments. No publication performed. Clinical resources and program terms need review before a live launch. Hosting must provide SPA fallback to index.html for nested routes.
+Published prototype: https://evo-foundation.netlify.app. Netlify project: evo-foundation. The initial production release was deployed from the local build using the Netlify CLI; automatic GitHub deployments are not configured. netlify.toml sets npm run build, the dist publish folder, Node 22, and the SPA fallback for direct page links. To release an update, run netlify build followed by netlify deploy --prod --dir=dist --no-build from this linked project. Set FOUNDATION_BASE_URL to the live URL when running scripts/verify.mjs to check the deployed site.
+
+No backend, analytics, real submissions, persistence, uploads, live course enrollment, credit, or payments. Clinical resources and program terms remain in development. Search-engine indexing remains disabled for this prototype.
 
 Brand: approved provisional Open Corners outlined logo, self-hosted Ubuntu, #3E6838 green. DESIGN.md records the visual system. PRODUCT.md records scope and unconfirmed program details. SURFACE-BRIEF.md records page intent.
 
