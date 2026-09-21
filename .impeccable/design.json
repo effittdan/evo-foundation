@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-19T18:10:00Z",
+  "title": "Design System: Evologics Foundation",
+  "extensions": {
+    "shadows": [
+      { "name": "worksheet-paper", "value": "0 8px 20px #18362a12", "purpose": "Decorative worksheet paper only; rotated -8deg." }
+    ],
+    "motion": [
+      { "name": "control-feedback", "value": "color 0.18s, background-color 0.18s, border-color 0.18s", "purpose": "Link and button feedback." },
+      { "name": "resource-arrow", "value": "transform 0.2s", "purpose": "Arrow translates 5px on row hover." },
+      { "name": "topic-reveal", "value": "reveal 0.22s ease-out", "purpose": "Clip-path changes from inset(0 0 12% 0) to inset(0 0 0 0); reduced motion disables animation and transitions." }
+    ],
+    "breakpoints": [
+      { "name": "wide-min", "value": "1500px" },
+      { "name": "compact-desktop-max", "value": "1100px" },
+      { "name": "navigation-collapse-max", "value": "900px" },
+      { "name": "stacked-mobile-max", "value": "650px" }
+    ],
+    "typographyMeta": {
+      "display": { "displayName": "Interior display", "purpose": "Default h1; hero and mobile overrides are documented in DESIGN.md." },
+      "metadata": { "displayName": "Readable metadata", "purpose": "Final cascade normalizes status, captions, topic metadata, and footer status to 14px. Decorative aria-hidden worksheet paper label is a separate 9px exception." }
+    }
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Filled action with explicit keyboard focus and restrained color feedback.",
+      "html": "<button class=\"ds-button\">Explore our focus<svg width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\"><path d=\"M4 12h15M13 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.5\"/></svg></button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:50px;padding:13px 22px;background:var(--green,#3e6838);color:var(--white,#fff);border:0;border-radius:var(--radius,4px);font:500 16px/1.5 Ubuntu,Arial,sans-serif;cursor:pointer;transition:color .18s,background-color .18s,border-color .18s}.ds-button:hover{background:var(--hover,#31542c);color:var(--white,#fff)}.ds-button:focus-visible{outline:3px solid var(--focus,#106b3d);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-button{transition:none}}"
+    },
+    {
+      "name": "Preview notice",
+      "kind": "custom",
+      "refersTo": "notice",
+      "description": "Quiet statement of program availability or preview boundaries.",
+      "html": "<div class=\"ds-notice\"><strong>Preview only — nothing is submitted.</strong> Use fictional information.</div>",
+      "css": ".ds-notice{background:var(--sage,#eaf0e5);color:var(--deep,#18362a);padding:20px 24px;font:400 16px/1.65 Ubuntu,Arial,sans-serif}.ds-notice strong{font-weight:700}@media(max-width:650px){.ds-notice{padding:20px;font-size:15px}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Open Corners",
+    "overview": "An approachable educational institution with scientific discipline. Light space, strong green typography, quiet rules, and purposeful imagery express the approved Open Corners direction. Opposing corners suggest room for learning and inquiry.",
+    "keyCharacteristics": ["Ubuntu throughout", "Evologics green on broad light surfaces", "Opposing square corners", "Flat editorial bands and ruled links", "Clearly labeled illustrative imagery"],
+    "rules": [
+      { "name": "Decorative miniature type", "body": "The 9px paper label is confined to aria-hidden worksheet artwork; meaningful resource text remains outside that artwork.", "section": "typography" },
+      { "name": "Print structure", "body": "Print notice and writing-rule grays are output-only structural colors; do not introduce them as screen branding.", "section": "colors" }
+    ],
+    "dos": ["Preserve the approved logo, local Ubuntu files, and image provenance.", "Keep focus states, reduced motion, meaningful labels, and accurate preview status."],
+    "donts": ["Do not treat fictional illustrative people as actual beneficiaries or staff.", "Do not add unsupported clinical, entity, grant, or accreditation claims."]
+  }
+}
