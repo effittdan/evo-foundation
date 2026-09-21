@@ -1,6 +1,6 @@
 # Foundation photography — September 21, 2026
 
-Original illustrative imagery generated with the built-in image_gen tool. Subjects are fictional and do not represent actual foundation staff, grantees, patients, facilities, or documented outcomes. Visible captions identify the images as AI-generated illustrations.
+Original illustrative imagery generated with the built-in image_gen tool. Subjects are fictional and do not represent actual foundation staff, grantees, patients, facilities, or documented outcomes. Per the owner request, public captions use editorial wording without AI-generation labels. Source provenance remains documented here, in PHOTO-PROMPTS.json, and in the image metadata.
 
 ## Reference observations
 

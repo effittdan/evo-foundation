@@ -110,7 +110,7 @@ The palette is a restrained green identity on warm light surfaces. Frontmatter r
 - **Interaction:** focus green for the explicit keyboard outline; error red with a written explanation. Notices use deep green on sage, not a separate warning palette.
 - **Print:** black text and white paper, with the print notice border and writing-rule grays reserved for worksheet structure. These grays are intentional output colors, not additions to the screen brand palette.
 
-Status must remain readable without color. Do not reduce body-text opacity or introduce a parallel aqua, lavender, neon, gradient, or gold identity. Footer links have white focus outlines. Keep a visible illustrative-image label beside the consultation photograph.
+Status must remain readable without color. Do not reduce body-text opacity or introduce a parallel aqua, lavender, neon, gradient, or gold identity. Footer links have white focus outlines. Photo captions use editorial wording; image provenance is documented in PHOTOGRAPHY.md. The favicon and Apple touch icon use the supplied 2024 Evo marque, proportionally fitted on a square white canvas.
 
 ## Typography
 

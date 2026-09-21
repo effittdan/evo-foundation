@@ -141,7 +141,7 @@ function Notice({ children }) {
   return <div className="notice">{children}</div>;
 }
 function EditorialPhoto({name,alt,caption}) {
-  return <figure className="editorial-photo"><img src={A + name + '.png'} alt={alt} width="1536" height="1024" loading="lazy" decoding="async"/><figcaption>{caption}<span>AI-generated illustrative image</span></figcaption></figure>;
+  return <figure className="editorial-photo"><img src={A + name + '.png'} alt={alt} width="1536" height="1024" loading="lazy" decoding="async"/><figcaption>{caption}</figcaption></figure>;
 }
 function Intro({ title, children, back = "Explore the foundation" }) {
   return (
@@ -193,7 +193,7 @@ function Home() {
           </div>
           <figcaption>
             Careful observation. Shared inquiry. New understanding.
-            <span>AI-generated illustrative image</span>
+            
           </figcaption>
         </figure>
       </section>
