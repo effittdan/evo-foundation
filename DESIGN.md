@@ -606,3 +606,14 @@ These optional interoperability exports mirror tokens.css; this app uses plain C
   --radius: var(--radius-input);
 }
 ```
+
+
+## September 22 UI Skills motion pass
+
+Guidance: [Animate](https://www.ui-skills.com/skills/emilkowalski/animate/llms.txt) and [Accessible Animation](https://www.ui-skills.com/skills/iart-ai/accessible-animation/llms.txt). The current request adds restrained motion to the earlier Hallmark baseline.
+
+Purpose: an occasional homepage welcome and subtle pointer feedback. Once the hero photo loads, it fades in with an 8px upward settle over 450ms. The Open Corners frame fades in over 300ms with a 60ms delay. Short action arrows move 3px on fine-pointer hover over 180ms, retargeting naturally when the pointer leaves. Keyboard focus remains immediate and does not trigger displacement. No scroll listeners, looping effects, parallax, added libraries, or delayed text.
+
+Reduced motion keeps a 120ms photo fade and short color feedback; photo displacement, corner animation, and arrow movement are disabled. The CSS media queries respond to live preference changes. Print suppresses the entrance. Existing --ease-out is reused. New durations are in tokens.css (--dur-photo-enter, --dur-frame-enter, --dur-motion-stagger, --dur-reduced-fade) and supplement the interoperability exports above.
+
+Verification: scripts/verify-motion.mjs checks the real CSS animations and durations, captures normal/reduced mid-animation states, checks hover displacement, live preference changes, and touch gating. Local screenshots are in .hallmark/review.

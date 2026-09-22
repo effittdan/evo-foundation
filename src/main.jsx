@@ -190,6 +190,7 @@ function Home() {
               src={A + "research.png"}
               alt="Illustrative scene of two biomedical researchers working together at a microscope"
               fetchPriority="high"
+              onLoad={(event) => event.currentTarget.classList.add("is-ready")}
             />
           </div>
           <figcaption>

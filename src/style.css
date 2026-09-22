@@ -1313,3 +1313,45 @@ textarea:hover:not(:disabled) { background: var(--canvas); }
   .header-inner .logo img { width: 175px; }
   .menu-toggle { gap: var(--space-2xs); padding-inline: 0; }
 }
+
+/* UI Skills: a single welcome gesture and restrained pointer feedback. */
+@keyframes photo-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes frame-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-image img.is-ready {
+    animation: photo-enter var(--dur-photo-enter) var(--ease-out) backwards;
+  }
+  .hero-image .corners::before,
+  .hero-image .corners::after {
+    animation: frame-enter var(--dur-frame-enter) var(--ease-out) var(--dur-motion-stagger) backwards;
+  }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .button > svg, .text-link > svg {
+    transition: transform var(--dur-short) var(--ease-out);
+  }
+  .button:hover:not(:focus-visible) > svg,
+  .text-link:hover:not(:focus-visible) > svg {
+    transform: translateX(3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-image img.is-ready {
+    animation: frame-enter var(--dur-reduced-fade) var(--ease-out) backwards !important;
+    transform: none;
+  }
+  a, button {
+    transition: color var(--dur-reduced-fade) var(--ease-out), background-color var(--dur-reduced-fade) var(--ease-out), border-color var(--dur-reduced-fade) var(--ease-out) !important;
+  }
+}
+@media print {
+  .hero-image img, .hero-image .corners::before, .hero-image .corners::after {
+    animation: none !important;
+  }
+}

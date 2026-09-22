@@ -31,6 +31,10 @@
   --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --dur-short: 180ms;
+  --dur-photo-enter: 450ms;
+  --dur-frame-enter: 300ms;
+  --dur-motion-stagger: 60ms;
+  --dur-reduced-fade: 120ms;
   --radius-input: 4px;
   --rule-fine: 1px;
   --green: var(--color-accent);
