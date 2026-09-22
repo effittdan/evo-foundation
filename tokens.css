@@ -1,0 +1,48 @@
+/* Hallmark · existing Evologics Foundation design system, portable tokens */
+:root {
+  --color-paper: oklch(97.72609% 0.0053758 117.9219);
+  --color-paper-2: oklch(94.75614% 0.0159128 130.4215);
+  --color-surface: oklch(100.00000% 0.0000000 0.0000);
+  --color-ink: oklch(27.29615% 0.0189636 154.4675);
+  --color-muted: oklch(49.08824% 0.0195971 150.7695);
+  --color-accent: oklch(47.34811% 0.0881272 141.3143);
+  --color-accent-ink: oklch(100.00000% 0.0000000 0.0000);
+  --color-accent-hover: oklch(40.80282% 0.0761947 141.3130);
+  --color-deep: oklch(30.54299% 0.0425343 165.5745);
+  --color-rule: oklch(88.50026% 0.0183407 134.9303);
+  --color-control: oklch(59.78738% 0.0283165 139.8212);
+  --color-focus: oklch(46.60726% 0.1095125 154.7555);
+  --color-error: oklch(48.53455% 0.1500630 24.6770);
+  --font-display: Ubuntu, Arial, sans-serif;
+  --font-body: Ubuntu, Arial, sans-serif;
+  --space-3xs: 4px;
+  --space-2xs: 8px;
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --text-sm: 14px;
+  --text-body: 18px;
+  --text-display: clamp(2.1rem, 4.2vw, 3.55rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 180ms;
+  --radius-input: 4px;
+  --rule-fine: 1px;
+  --green: var(--color-accent);
+  --hover: var(--color-accent-hover);
+  --deep: var(--color-deep);
+  --canvas: var(--color-paper);
+  --sage: var(--color-paper-2);
+  --ink: var(--color-ink);
+  --muted: var(--color-muted);
+  --border: var(--color-rule);
+  --control: var(--color-control);
+  --focus: var(--color-focus);
+  --white: var(--color-surface);
+  --error: var(--color-error);
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import "./style.css";
+import "../tokens.css";
 
 const A = "/assets/";
 function Arrow() {
@@ -86,7 +87,7 @@ function Header({ path }) {
               <a
                 key={url}
                 href={url}
-                aria-current={path === url ? "page" : undefined}
+                aria-current={path === url ? "page" : path.startsWith(url + "/") ? "location" : undefined}
               >
                 {label}
               </a>
@@ -117,13 +118,13 @@ function Footer() {
         <div>
           <h2>Explore</h2>
           <Link to="/research/grants">Research & grants</Link>
-          <Link to="/professionals">Healthcare professionals</Link>
+          <Link to="/professionals">For professionals</Link>
           <Link to="/patients">Patients & families</Link>
         </div>
         <div>
           <h2>The foundation</h2>
-          <Link to="/about">Our purpose & relationship</Link>
-          <Link to="/professionals/cme">Continuing education plans</Link>
+          <Link to="/about">About the foundation</Link>
+          <Link to="/professionals/cme">CME plans</Link>
           <Link to="/contact">Contact</Link>
         </div>
       </div>
@@ -177,11 +178,11 @@ function Home() {
             <span>Improving care.</span>
           </h1>
           <p>
-            We are building a foundation to support scientific research and
-            research grants, with a clear goal: better medical outcomes and
-            better patient care.
+            Supporting scientific research and education in pursuit of better
+            medical outcomes and better patient care.
           </p>
-          <Action to="/research/grants">Explore research & grants</Action>
+          <Action to="/research/grants">Explore research grants</Action>
+          <p className="hero-availability">Grant program in development</p>
         </div>
         <figure className="hero-image">
           <div className="corners">
@@ -193,37 +194,22 @@ function Home() {
           </div>
           <figcaption>
             Careful observation. Shared inquiry. New understanding.
-            
           </figcaption>
         </figure>
       </section>
       <section className="focus-section">
         <div className="container split">
           <div>
-            <h2>
-              Scientific inquiry.
-              <br />
-              <span>Human purpose.</span>
-            </h2>
-            <p className="large-copy">
-              Better medical outcomes. Better patient care. The purpose behind
-              our work.
-            </p>
+            <h2>Research with a human purpose.</h2>
           </div>
           <div>
             <p>
-              Progress in medicine depends on asking important questions—and
-              giving researchers the support to investigate them. Our proposed
-              grant program will support rigorous studies with meaningful
-              relevance to patient care.
-            </p>
-            <p>
-              We aim to connect scientific discovery, clinical understanding,
-              and education so that what is learned can inform how care is
-              delivered.
+              We are building a foundation to help researchers investigate
+              questions that matter to patients—and help people understand
+              what the evidence means for care.
             </p>
             <Action secondary to="/our-mission">
-              Our mission and approach
+              Our mission
             </Action>
           </div>
         </div>
@@ -267,26 +253,15 @@ function Home() {
       <section className="research-band">
         <div className="container split">
           <div>
-            <h2>
-              Meaningful research.
-              <br />
-              Responsible support.
-            </h2>
+            <h2>What responsible support means.</h2>
+            <p>Three principles guiding our proposed grant program.</p>
+            <Action to="/research/grants">Grant review process</Action>
           </div>
-          <div>
-            <p>
-              Our planned approach places scientific rigor, patient relevance,
-              and transparent funding relationships at the center of grant
-              review.
-            </p>
-            <p>
-              Clear methods and honest reporting matter, including when findings
-              are neutral or do not support the original hypothesis.
-            </p>
-            <Action to="/research/grants">
-              How the grant process will work
-            </Action>
-          </div>
+          <dl className="research-principles">
+            <div><dt>Scientific rigor</dt><dd>Clear questions, sound methods, and studies designed to produce useful evidence.</dd></div>
+            <div><dt>Patient relevance</dt><dd>Research questions connected to patient priorities and the decisions made in care.</dd></div>
+            <div><dt>Transparent reporting</dt><dd>Disclosed funding relationships and honest findings, including neutral results.</dd></div>
+          </dl>
         </div>
       </section>
       <section className="container learning-section">
@@ -297,7 +272,7 @@ function Home() {
             supports better care.
           </h2>
           <Link to="/professionals" className="text-link">
-            Explore professional education
+            Professional education
             <Arrow />
           </Link>
         </div>
@@ -369,7 +344,7 @@ function TopicDetail({ name, professional = false }) {
       </p>
       {!professional && (
         <Action secondary to="/patients/preparing-for-your-appointment">
-          Prepare your own questions
+          Prepare your questions
         </Action>
       )}
     </section>
@@ -562,7 +537,7 @@ function Research({ grants = false }) {
             Funding amounts, dates, eligibility, and final requirements have not
             yet been announced.
           </p>
-          <Action to="/research/apply">Preview the application</Action>
+          <Action to="/research/apply">Application preview</Action>
         </aside>
         <div>
           <EditorialPhoto name="research" alt="Illustrative biomedical researchers at a microscope" caption="Supporting the people behind the research."/>
@@ -669,7 +644,7 @@ function CME() {
             confirmed.
           </Notice>
           <Action secondary to="/professionals">
-            Explore professional topics
+            Professional topics
           </Action>
         </div>
       </section>
@@ -783,7 +758,7 @@ function Apply() {
               Start again
             </button>
             <Action secondary to="/research/grants">
-              Return to research grants
+              Research grants
             </Action>
           </div>
         ) : (
@@ -844,6 +819,7 @@ function Apply() {
                     <textarea
                       id={f.toLowerCase().replaceAll(" ", "-")}
                       rows={step === 0 ? 2 : 4}
+                      aria-required="true"
                       value={data[f] || ""}
                       onChange={(e) =>
                         setData({ ...data, [f]: e.target.value })
@@ -855,14 +831,12 @@ function Apply() {
                           : undefined
                       }
                     />
-                    {errors.includes(f) && (
                       <p
                         id={f.toLowerCase().replaceAll(" ", "-") + "-error"}
-                        className="error"
+                        className="error field-message"
                       >
-                        Enter an example response.
+                        {errors.includes(f) ? "Enter an example response." : ""}
                       </p>
-                    )}
                   </div>
                 ))
               ) : (

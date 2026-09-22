@@ -1,0 +1,10 @@
+{
+  "date": "2026-09-22",
+  "system": "DESIGN.md",
+  "fonts": "Ubuntu 400/500/700, self-hosted (src/style.css:5)",
+  "palette": "Evologics green #3E6838; DESIGN.md:5",
+  "motion": "No motion dependency; CSS only (package.json:10)",
+  "spacing": "Existing 8/12/16/24/32/48/56/96px system (DESIGN.md:66)",
+  "framework": "React 19 + Vite 8 (package.json:10)",
+  "scope": "In-place audit and refinement"
+}

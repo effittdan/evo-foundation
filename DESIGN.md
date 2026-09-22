@@ -155,7 +155,7 @@ Opposing top-left and bottom-right corners are the signature. Outside the logo, 
 - **Notices and preview state:** sage panels with plain-language availability. The grant form has four entry steps plus review, required textareas, associated inline errors and an alert summary, example fill, reset, and truthful completion. Input exists only in page memory; uploads are unavailable. CME and contact pages describe future availability.
 - **Fields:** white surface, strong 1px boundary, resizable textarea, visible label, error border plus explanation, and a 3px focus outline offset 5px. Do not replace labels with placeholders.
 - **Worksheet feature:** CSS-drawn paper illustration is hidden from assistive technology; the linked title and description remain the meaningful accessible content. The destination provides a real print action and ruled writing sections.
-- **Illustrative photography:** `public/assets/research.png`, `collaboration.png`, and `care.png` form the current set, generated with the built-in image generation tool. Research leads the homepage and research pages; collaboration and care support the professional and patient sections. Supporting photographs retain their 3:2 ratio in equal-width homepage columns, use intrinsic dimensions and lazy loading, and stack on mobile. Neutral daylight and muted greens unite the set. These fictional subjects are not documentary evidence, beneficiaries, staff, or actual facilities. Exact prompts are in `PHOTO-PROMPTS.json` and embedded in the rasters; `PHOTOGRAPHY.md` records reference observations and placements. Preserve AI-generated illustrative captions and descriptive alt text. The earlier `consultation.png` remains an unused alternative.
+- **Illustrative photography:** `public/assets/research.png`, `collaboration.png`, and `care.png` form the current set, generated with the built-in image generation tool. Research leads the homepage and research pages; collaboration and care support the professional and patient sections. Supporting photographs retain their 3:2 ratio in equal-width homepage columns, use intrinsic dimensions and lazy loading, and stack on mobile. Neutral daylight and muted greens unite the set. These fictional subjects are not documentary evidence, beneficiaries, staff, or actual facilities. Exact prompts are in `PHOTO-PROMPTS.json` and embedded in the rasters; `PHOTOGRAPHY.md` records reference observations and placements. Preserve descriptive alt text and the internal image provenance record; public captions omit AI-generation labels at the owner request. The earlier `consultation.png` remains an unused alternative.
 - **Footer:** deep green, reversed provisional logo, navigation, readable development status, and the Evologics relationship. No borrowed address, invented contact channel, or unsupported entity/credit claim.
 
 ## Do's and Don'ts
@@ -173,3 +173,436 @@ Opposing top-left and bottom-right corners are the signature. Outside the logo, 
 
 The homepage now leads with research and grants: mission hero, intended patient impact, researcher pathways, responsible grant support, then professional and patient education. Our mission replaces the prior specialty page. Existing visual tokens remain unchanged. See POSITIONING.md for rationale and reference-site lessons.
 
+
+
+## September 22 Hallmark refinement
+
+Genre: editorial. The existing brand-managed diptych and resource-index structure remains the homepage family; interior pages retain reading layouts and the application retains its step form. This refinement preserves the approved system rather than rotating catalog themes.
+
+Effective overrides are appended to src/style.css. The mission panel is shorter; the research band lists scientific rigor, patient relevance, and transparent reporting. Phone footer links stack with 44px targets. Content sidebars stack below 900px; the smallest header uses a 175px logo. Primary actions have concise, single-line labels. Error message slots reserve space. Parent navigation stays active on nested routes. Topic reveals and translated arrows are removed; color feedback uses named easing tokens.
+
+Ubuntu remains both display and body face. Exact brand colors are represented in OKLCH in tokens.css; white surfaces and deep-green bands are deliberate existing-system exceptions to Hallmark catalog preferences. Existing print rules and historical spacing remain scoped as before. See HALLMARK-AUDIT.md for findings and verification.
+
+## Exports
+
+These optional interoperability exports mirror tokens.css; this app uses plain CSS, not Tailwind or shadcn. Responsive CSS expressions use a string extension in the DTCG-style export.
+
+### tokens.css
+```css
+/* Hallmark · existing Evologics Foundation design system, portable tokens */
+:root {
+  --color-paper: oklch(97.72609% 0.0053758 117.9219);
+  --color-paper-2: oklch(94.75614% 0.0159128 130.4215);
+  --color-surface: oklch(100.00000% 0.0000000 0.0000);
+  --color-ink: oklch(27.29615% 0.0189636 154.4675);
+  --color-muted: oklch(49.08824% 0.0195971 150.7695);
+  --color-accent: oklch(47.34811% 0.0881272 141.3143);
+  --color-accent-ink: oklch(100.00000% 0.0000000 0.0000);
+  --color-accent-hover: oklch(40.80282% 0.0761947 141.3130);
+  --color-deep: oklch(30.54299% 0.0425343 165.5745);
+  --color-rule: oklch(88.50026% 0.0183407 134.9303);
+  --color-control: oklch(59.78738% 0.0283165 139.8212);
+  --color-focus: oklch(46.60726% 0.1095125 154.7555);
+  --color-error: oklch(48.53455% 0.1500630 24.6770);
+  --font-display: Ubuntu, Arial, sans-serif;
+  --font-body: Ubuntu, Arial, sans-serif;
+  --space-3xs: 4px;
+  --space-2xs: 8px;
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --text-sm: 14px;
+  --text-body: 18px;
+  --text-display: clamp(2.1rem, 4.2vw, 3.55rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 180ms;
+  --radius-input: 4px;
+  --rule-fine: 1px;
+  --green: var(--color-accent);
+  --hover: var(--color-accent-hover);
+  --deep: var(--color-deep);
+  --canvas: var(--color-paper);
+  --sage: var(--color-paper-2);
+  --ink: var(--color-ink);
+  --muted: var(--color-muted);
+  --border: var(--color-rule);
+  --control: var(--color-control);
+  --focus: var(--color-focus);
+  --white: var(--color-surface);
+  --error: var(--color-error);
+}
+
+```
+
+### Tailwind v4 @theme
+```css
+@theme {
+  --color-paper: oklch(97.72609% 0.0053758 117.9219);
+  --color-paper-2: oklch(94.75614% 0.0159128 130.4215);
+  --color-surface: oklch(100.00000% 0.0000000 0.0000);
+  --color-ink: oklch(27.29615% 0.0189636 154.4675);
+  --color-muted: oklch(49.08824% 0.0195971 150.7695);
+  --color-accent: oklch(47.34811% 0.0881272 141.3143);
+  --color-accent-ink: oklch(100.00000% 0.0000000 0.0000);
+  --color-accent-hover: oklch(40.80282% 0.0761947 141.3130);
+  --color-deep: oklch(30.54299% 0.0425343 165.5745);
+  --color-rule: oklch(88.50026% 0.0183407 134.9303);
+  --color-control: oklch(59.78738% 0.0283165 139.8212);
+  --color-focus: oklch(46.60726% 0.1095125 154.7555);
+  --color-error: oklch(48.53455% 0.1500630 24.6770);
+  --font-display: Ubuntu, Arial, sans-serif;
+  --font-body: Ubuntu, Arial, sans-serif;
+  --spacing-3xs: 4px;
+  --spacing-2xs: 8px;
+  --spacing-xs: 12px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --spacing-2xl: 64px;
+  --spacing-3xl: 96px;
+  --text-sm: 14px;
+  --text-body: 18px;
+  --text-display: clamp(2.1rem, 4.2vw, 3.55rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 180ms;
+  --radius-input: 4px;
+  --rule-fine: 1px;
+}
+```
+
+### DTCG tokens
+```json
+{
+  "color-paper": {
+    "$value": {
+      "colorSpace": "oklch",
+      "components": [
+        0.9772609,
+        0.0053758,
+        117.9219
+      ],
+      "alpha": 1
+    },
+    "$type": "color"
+  },
+  "color-paper-2": {
+    "$value": {
+      "colorSpace": "oklch",
+      "components": [
+        0.9475614,
+        0.0159128,
+        130.4215
+      ],
+      "alpha": 1
+    },
+    "$type": "color"
+  },
+  "color-surface": {
+    "$value": {
+      "colorSpace": "oklch",
+      "components": [
+        1,
+        0,
+        0
+      ],
+      "alpha": 1
+    },
+    "$type": "color"
+  },
+  "color-ink": {
+    "$value": {
+      "colorSpace": "oklch",
+      "components": [
+        0.2729615,
+        0.0189636,
+        154.4675
+      ],
+      "alpha": 1
+    },
+    "$type": "color"
+  },
+  "color-muted": {
+    "$value": {
+      "colorSpace": "oklch",
+      "components": [
+        0.4908824,
+        0.0195971,
+        150.7695
+      ],
+      "alpha": 1
+    },
+    "$type": "color"
+  },
+  "color-accent": {
+    "$value": {
+      "colorSpace": "oklch",
+      "components": [
+        0.4734811,
+        0.0881272,
+        141.3143
+      ],
+      "alpha": 1
+    },
+    "$type": "color"
+  },
+  "color-accent-ink": {
+    "$value": {
+      "colorSpace": "oklch",
+      "components": [
+        1,
+        0,
+        0
+      ],
+      "alpha": 1
+    },
+    "$type": "color"
+  },
+  "color-accent-hover": {
+    "$value": {
+      "colorSpace": "oklch",
+      "components": [
+        0.40802819999999995,
+        0.0761947,
+        141.313
+      ],
+      "alpha": 1
+    },
+    "$type": "color"
+  },
+  "color-deep": {
+    "$value": {
+      "colorSpace": "oklch",
+      "components": [
+        0.3054299,
+        0.0425343,
+        165.5745
+      ],
+      "alpha": 1
+    },
+    "$type": "color"
+  },
+  "color-rule": {
+    "$value": {
+      "colorSpace": "oklch",
+      "components": [
+        0.8850026,
+        0.0183407,
+        134.9303
+      ],
+      "alpha": 1
+    },
+    "$type": "color"
+  },
+  "color-control": {
+    "$value": {
+      "colorSpace": "oklch",
+      "components": [
+        0.5978738,
+        0.0283165,
+        139.8212
+      ],
+      "alpha": 1
+    },
+    "$type": "color"
+  },
+  "color-focus": {
+    "$value": {
+      "colorSpace": "oklch",
+      "components": [
+        0.46607259999999995,
+        0.1095125,
+        154.7555
+      ],
+      "alpha": 1
+    },
+    "$type": "color"
+  },
+  "color-error": {
+    "$value": {
+      "colorSpace": "oklch",
+      "components": [
+        0.48534550000000004,
+        0.150063,
+        24.677
+      ],
+      "alpha": 1
+    },
+    "$type": "color"
+  },
+  "font-display": {
+    "$value": [
+      "Ubuntu",
+      "Arial",
+      "sans-serif"
+    ],
+    "$type": "fontFamily"
+  },
+  "font-body": {
+    "$value": [
+      "Ubuntu",
+      "Arial",
+      "sans-serif"
+    ],
+    "$type": "fontFamily"
+  },
+  "space-3xs": {
+    "$value": {
+      "value": 4,
+      "unit": "px"
+    },
+    "$type": "dimension"
+  },
+  "space-2xs": {
+    "$value": {
+      "value": 8,
+      "unit": "px"
+    },
+    "$type": "dimension"
+  },
+  "space-xs": {
+    "$value": {
+      "value": 12,
+      "unit": "px"
+    },
+    "$type": "dimension"
+  },
+  "space-sm": {
+    "$value": {
+      "value": 16,
+      "unit": "px"
+    },
+    "$type": "dimension"
+  },
+  "space-md": {
+    "$value": {
+      "value": 24,
+      "unit": "px"
+    },
+    "$type": "dimension"
+  },
+  "space-lg": {
+    "$value": {
+      "value": 32,
+      "unit": "px"
+    },
+    "$type": "dimension"
+  },
+  "space-xl": {
+    "$value": {
+      "value": 48,
+      "unit": "px"
+    },
+    "$type": "dimension"
+  },
+  "space-2xl": {
+    "$value": {
+      "value": 64,
+      "unit": "px"
+    },
+    "$type": "dimension"
+  },
+  "space-3xl": {
+    "$value": {
+      "value": 96,
+      "unit": "px"
+    },
+    "$type": "dimension"
+  },
+  "text-sm": {
+    "$value": {
+      "value": 14,
+      "unit": "px"
+    },
+    "$type": "dimension"
+  },
+  "text-body": {
+    "$value": {
+      "value": 18,
+      "unit": "px"
+    },
+    "$type": "dimension"
+  },
+  "text-display": {
+    "$value": "clamp(2.1rem, 4.2vw, 3.55rem)",
+    "$type": "string",
+    "$extensions": {
+      "css": {
+        "responsive": true
+      }
+    }
+  },
+  "ease-out": {
+    "$value": [
+      0.16,
+      1,
+      0.3,
+      1
+    ],
+    "$type": "cubicBezier"
+  },
+  "ease-in": {
+    "$value": [
+      0.7,
+      0,
+      0.84,
+      0
+    ],
+    "$type": "cubicBezier"
+  },
+  "ease-in-out": {
+    "$value": [
+      0.65,
+      0,
+      0.35,
+      1
+    ],
+    "$type": "cubicBezier"
+  },
+  "dur-short": {
+    "$value": {
+      "value": 180,
+      "unit": "ms"
+    },
+    "$type": "duration"
+  },
+  "radius-input": {
+    "$value": {
+      "value": 4,
+      "unit": "px"
+    },
+    "$type": "dimension"
+  },
+  "rule-fine": {
+    "$value": {
+      "value": 1,
+      "unit": "px"
+    },
+    "$type": "dimension"
+  }
+}
+```
+
+### shadcn/ui CSS variables
+```css
+:root {
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+  --primary: var(--color-accent);
+  --primary-foreground: var(--color-accent-ink);
+  --muted: var(--color-paper-2);
+  --muted-foreground: var(--color-muted);
+  --border: var(--color-rule);
+  --input: var(--color-control);
+  --ring: var(--color-focus);
+  --radius: var(--radius-input);
+}
+```

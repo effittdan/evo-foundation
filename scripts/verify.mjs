@@ -21,7 +21,7 @@ const routes = [
   "/contact",
   "/missing",
 ];
-for (const width of [1440, 390, 320]) {
+for (const width of [1440, 768, 414, 375, 320]) {
   await page.setViewportSize({ width, height: 1000 });
   for (const route of routes) {
     await page.goto(base + route);
@@ -41,6 +41,11 @@ for (const width of [1440, 390, 320]) {
       ),
       `Overflow: ${width} ${route}`,
     );
+    const clippedControls = await page.locator('.button, .text-link, .secondary-button, .filters button, .breadcrumb, .footer-main a:not(.logo)').evaluateAll(elements => elements.filter(el => {
+      const rect = el.getBoundingClientRect();
+      return rect.width > 0 && (rect.left < 0 || rect.right > innerWidth + 1 || el.scrollWidth > el.clientWidth + 1);
+    }).map(el => el.textContent.trim()));
+    assert.deepEqual(clippedControls, [], `Clipped controls: ${width} ${route}`);
     assert.ok(
       await page
         .locator("img")
@@ -49,7 +54,7 @@ for (const width of [1440, 390, 320]) {
         ),
       `Image: ${route}`,
     );
-    if (route === "/" && width !== 320)
+    if (route === "/" && (width === 1440 || width === 375))
       await page.screenshot({
         path: `.impeccable/review/${width === 1440 ? "desktop" : "mobile"}.png`,
         fullPage: true,
@@ -131,6 +136,6 @@ assert.equal(await page.locator("header").isVisible(), false);
 assert.equal(await page.locator(".writing-space").count(), 6);
 assert.deepEqual(errors, []);
 console.log(
-  "PASS: 12 routes at 1440, 390, 320px; no overflow or broken images; grant validation/review/completion/reset; learning filters; mobile menu/Escape; print worksheet; no browser errors.",
+  "PASS: 12 routes at 1440, 768, 414, 375, 320px; no overflow, clipped controls, or broken images; grant validation/review/completion/reset; learning filters; mobile menu/Escape; print worksheet; no browser errors.",
 );
 await browser.close();
